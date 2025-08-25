@@ -1,0 +1,43 @@
+sample	dataset	group	cst
+h.001B	London	Healthy	I
+h.002B	London	Healthy	III
+h.004B	London	Healthy	III
+h.006B	London	Healthy	III
+h.009B	London	Healthy	I
+h.010B	London	Healthy	I
+h.015B	London	Healthy	IV
+h.020B	London	Healthy	V
+v.003A	London	BV	III / IV
+v.006A	London	BV	IV
+v.008A	London	BV	III / IV
+v.009A	London	BV	III / IV
+v.010A	London	BV	IV
+v.012B	London	BV	IV
+v.013B	London	BV	IV
+v.014B	London	BV	III / IV
+v.018B	London	BV	IV
+v.017B	London	BV	IV
+v.012A	London	BV	III / IV
+v.013A	London	BV	III / IV
+v.a4_1	Europe	BV	IV
+v.a5_1	Europe	BV	IV
+v.a5_12	Europe	BV	IV
+v.a6_1	Europe	BV	IV
+v.a6_4	Europe	BV	IV
+v.a6_6	Europe	BV	IV
+v.a6_10	Europe	BV	IV
+v.a7_1	Europe	BV	IV
+v.a8_3	Europe	BV	III / IV
+v.a8_6	Europe	BV	III / IV
+v.a13_19	Europe	BV	IV
+v.a13_22	Europe	BV	IV
+v.a15_6	Europe	BV	III / IV
+v.a17_4	Europe	BV	IV
+h.b4_1	Europe	Healthy	III
+h.b5_12	Europe	Healthy	III
+h.b6_4	Europe	Healthy	III
+h.b6_10	Europe	Healthy	III
+h.b8_3	Europe	Healthy	I
+h.b8_6	Europe	Healthy	I
+h.b13_19	Europe	Healthy	III
+h.b13_22	Europe	Healthy	III
