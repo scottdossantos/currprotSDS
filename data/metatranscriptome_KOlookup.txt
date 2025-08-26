@@ -1,9 +1,9 @@
 ko	map	pathway
 K00002	map00930	Caprolactam degradation
-K00003	map00300	Lysine biosynthesis
+K00003	map00300	Lys metabolism
 K00005	map00561	Glycerolipid metabolism
 K00008	map00051	Fructose and mannose metabolism
-K00012	map00520	Amino sugar and nucleotide sugar metabolism
+K00012	map00520	Amino sugar metabolism
 K00014	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
 K00016	map00640	Propanoate metabolism
 K00018	map00680	Glyoxylate and dicarboxylate metabolism
@@ -19,17 +19,17 @@ K00046	Unknown	Unknown
 K00048	map00630	Glyoxylate and dicarboxylate metabolism
 K00052	map00290	Valine, leucine and isoleucine biosynthesis
 K00053	map00770	Pantothenate and CoA biosynthesis
-K00054	map00900	Terpenoid backbone biosynthesis
+K00054	map00900	Terpenoid biosynthesis
 K00057	map00564	Glycerophospholipid metabolism
-K00058	map00680	Glycine serine and threonine metabolism
-K00059	map01040	Biosynthesis of unsaturated fatty acids
+K00058	map00680	Gly-Ser-Thr metabolism
+K00059	map01040	Fatty acid biosynthesis
 K00065	map00040	Pentose and glucuronate interconversions
 K00074	map00650	Butanoate metabolism
 K00075	map00550	Peptidoglycan biosynthesis
 K00077	map00770	Pantothenate and CoA biosynthesis
 K00079	map00590	Arachidonic acid metabolism
 K00088	map00983	Drug metabolism - other enzymes
-K00099	map00900	Terpenoid backbone biosynthesis
+K00099	map00900	Terpenoid biosynthesis
 K00100	map00650	Butanoate metabolism
 K00104	map00630	Glyoxylate and dicarboxylate metabolism
 K00105	map00564	Glycerophospholipid metabolism
@@ -41,10 +41,10 @@ K00123	map00680	Methanoate metabolism
 K00128	map00903	Limonene and pinene degradation
 K00130	map00260	Glycine, serine and threonine metabolism
 K00131	map00010	Glycolysis / Gluconeogenesis
-K00133	map00300	Lysine biosynthesis
+K00133	map00300	Lys metabolism
 K00134	map05010	Glycolysis / Gluconeogenesis
-K00145	map00330	Arginine and proline metabolism
-K00147	map00330	Arginine and proline metabolism
+K00145	map00330	Arg-Pro metabolism
+K00147	map00330	Arg-Pro metabolism
 K00158	map00620	Pyruvate metabolism
 K00161	map00650	Butanoate metabolism
 K00162	map00650	Butanoate metabolism
@@ -53,7 +53,7 @@ K00175	map00720	Citrate cycle (TCA cycle)
 K00176	map00720	Carbon fixation pathways in prokaryotes
 K00177	map00720	Citrate cycle (TCA cycle)
 K00208	map00061	Fatty acid biosynthesis
-K00215	map00300	Lysine biosynthesis
+K00215	map00300	Lys metabolism
 K00226	map00240	Pyrimidine metabolism
 K00239	map00720	Citrate cycle (TCA cycle)
 K00240	map00720	Citrate cycle (TCA cycle)
@@ -65,13 +65,13 @@ K00257	map00626	Naphthalene degradation
 K00260	map00910	Nitrogen metabolism
 K00262	map00910	Nitrogen metabolism
 K00266	map00910	Nitrogen metabolism
-K00278	map00760	Nicotinate and nicotinamide metabolism
+K00278	map00760	Vitamin B3 metabolism
 K00282	map00260	Glycine, serine and threonine metabolism
 K00283	map00260	Glycine, serine and threonine metabolism
 K00284	map00910	Nitrogen metabolism
-K00286	map00330	Arginine and proline metabolism
+K00286	map00330	Arg-Pro metabolism
 K00287	map00790	Folate biosynthesis
-K00290	map00310	Lysine degradation
+K00290	map00310	Lys metabolism
 K00297	map00720	One carbon pool by folate
 K00302	map00260	Glycine, serine and threonine metabolism
 K00313	Unknown	Unknown
@@ -112,7 +112,7 @@ K00537	Unknown	Unknown
 K00540	Unknown	Unknown
 K00549	map00450	Selenocompound metabolism
 K00554	Unknown	Unknown
-K00558	map00270	Cysteine and methionine metabolism
+K00558	map00270	Cys-Met metabolism
 K00560	map00670	One carbon pool by folate
 K00561	Unknown	Unknown
 K00564	Unknown	Unknown
@@ -122,19 +122,19 @@ K00568	map00130	Ubiquinone and other terpenoid-quinone biosynthesis
 K00571	Unknown	Unknown
 K00574	Unknown	Unknown
 K00575	map02030	Bacterial chemotaxis
-K00600	map00680	Glycine serine and threonine metabolism
+K00600	map00680	Gly-Ser-Thr metabolism
 K00602	map00670	One carbon pool by folate
 K00604	map00970	Aminoacyl-tRNA biosynthesis
 K00605	map00910	Nitrogen metabolism
 K00606	map00770	Pantothenate and CoA biosynthesis
 K00609	map00250	Alanine, aspartate and glutamate metabolism
 K00610	map00250	Alanine, aspartate and glutamate metabolism
-K00611	map00330	Arginine and proline metabolism
-K00613	map00330	Arginine and proline metabolism
+K00611	map00330	Arg-Pro metabolism
+K00613	map00330	Arg-Pro metabolism
 K00614	Unknown	Unknown
 K00615	map01051	Pentose phosphate pathway
 K00616	map00030	Pentose phosphate pathway
-K00620	map00330	Arginine and proline metabolism
+K00620	map00330	Arg-Pro metabolism
 K00625	map00720	Citrate cycle (TCA cycle)
 K00626	map02020	Two-component system
 K00627	map00620	Pyruvate metabolism
@@ -148,8 +148,8 @@ K00651	map00920	Sulfur metabolism
 K00652	map00780	Biotin metabolism
 K00655	map00564	Glycerophospholipid metabolism
 K00656	map00650	Butanoate metabolism
-K00674	map00300	Lysine biosynthesis
-K00677	map00540	Lipopolysaccharide biosynthesis
+K00674	map00300	Lys metabolism
+K00677	map00540	LPS biosynthesis
 K00680	map00903	Limonene and pinene degradation
 K00687	map00550	Peptidoglycan biosynthesis
 K00688	map00500	Starch and sucrose metabolism
@@ -161,7 +161,7 @@ K00703	map00500	Starch and sucrose metabolism
 K00705	map00500	Starch and sucrose metabolism
 K00721	map00510	N-Glycan biosynthesis
 K00745	Unknown	Unknown
-K00748	map00540	Lipopolysaccharide biosynthesis
+K00748	map00540	LPS biosynthesis
 K00754	map00051	Fructose and mannose metabolism
 K00756	map00240	Pyrimidine metabolism
 K00757	map00240	Pyrimidine metabolism
@@ -169,12 +169,12 @@ K00759	map00230	Purine metabolism
 K00760	map00983	Drug metabolism - other enzymes
 K00761	map00240	Pyrimidine metabolism
 K00762	map00240	Pyrimidine metabolism
-K00763	map00760	Nicotinate and nicotinamide metabolism
+K00763	map00760	Vitamin B3 metabolism
 K00764	map00250	Alanine, aspartate and glutamate metabolism
 K00766	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
-K00767	map00760	Nicotinate and nicotinamide metabolism
-K00768	map00860	Porphyrin and chlorophyll metabolism
-K00772	map00270	Cysteine and methionine metabolism
+K00767	map00760	Vitamin B3 metabolism
+K00768	map00860	Porphyrin metabolism
+K00772	map00270	Cys-Met metabolism
 K00773	Unknown	Unknown
 K00777	Unknown	Unknown
 K00782	Unknown	Unknown
@@ -182,38 +182,38 @@ K00783	Unknown	Unknown
 K00784	map03013	RNA transport
 K00786	Unknown	Unknown
 K00788	map00730	Thiamine metabolism
-K00789	map00270	Cysteine and methionine metabolism
+K00789	map00270	Cys-Met metabolism
 K00790	map00550	Peptidoglycan biosynthesis
 K00791	map00908	Zeatin biosynthesis
 K00793	map00740	Riboflavin metabolism
 K00794	map00740	Riboflavin metabolism
 K00796	map00790	Folate biosynthesis
 K00797	map00480	Glutathione metabolism
-K00798	map00860	Porphyrin and chlorophyll metabolism
+K00798	map00860	Porphyrin metabolism
 K00800	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
-K00805	map00900	Terpenoid backbone biosynthesis
-K00806	map00900	Terpenoid backbone biosynthesis
-K00811	map00960	Alanine aspartate and glutamate metabolism
-K00812	map00960	Alanine aspartate and glutamate metabolism
-K00817	map00960	Histidine metabolism
-K00818	map00330	Arginine and proline metabolism
-K00820	map00520	Amino sugar and nucleotide sugar metabolism
+K00805	map00900	Terpenoid biosynthesis
+K00806	map00900	Terpenoid biosynthesis
+K00811	map00960	Ala-Asp-Glu metabolism
+K00812	map00960	Ala-Asp-Glu metabolism
+K00817	map00960	His metabolism
+K00818	map00330	Arg-Pro metabolism
+K00820	map00520	Amino sugar metabolism
 K00826	map00770	Pantothenate and CoA biosynthesis
 K00831	map00750	Vitamin B6 metabolism
 K00832	map00960	Phenylalanine tyrosine and tryptophan metabolism
 K00833	map00780	Biotin metabolism
 K00837	Unknown	Unknown
-K00841	map00300	Lysine biosynthesis
+K00841	map00300	Lys metabolism
 K00844	map04973	Carbohydrate digestion and absorption
 K00845	map00524	Butirosin and neomycin biosynthesis
-K00847	map00520	Amino sugar and nucleotide sugar metabolism
-K00849	map00520	Amino sugar and nucleotide sugar metabolism
+K00847	map00520	Amino sugar metabolism
+K00849	map00520	Amino sugar metabolism
 K00850	map00680	Glycolysis / Gluconeogenesis
 K00851	map00030	Pentose phosphate pathway
 K00852	map00030	Pentose phosphate pathway
 K00854	map00040	Pentose and glucuronate interconversions
 K00857	map00983	Drug metabolism - other enzymes
-K00858	map00760	Nicotinate and nicotinamide metabolism
+K00858	map00760	Vitamin B3 metabolism
 K00859	map00770	Pantothenate and CoA biosynthesis
 K00863	map04622	RIG-I-like receptor signaling pathway
 K00864	map04626	Glycerolipid metabolism
@@ -225,25 +225,25 @@ K00873	map04930	Glycolysis / Gluconeogenesis
 K00876	map00983	Drug metabolism - other enzymes
 K00878	map00730	Thiamine metabolism
 K00882	map00051	Fructose and mannose metabolism
-K00884	map00520	Amino sugar and nucleotide sugar metabolism
-K00886	map00520	Amino sugar and nucleotide sugar metabolism
+K00884	map00520	Amino sugar metabolism
+K00886	map00520	Amino sugar metabolism
 K00889	map04810	Regulation of actin cytoskeleton
 K00891	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
 K00895	map00051	Fructose and mannose metabolism
 K00903	map00543	Exopolysaccharide biosynthesis
 K00904	map00230	Purine metabolism
-K00912	map00540	Lipopolysaccharide biosynthesis
-K00919	map00900	Terpenoid backbone biosynthesis
+K00912	map00540	LPS biosynthesis
+K00919	map00900	Terpenoid biosynthesis
 K00924	Unknown	Unknown
 K00925	map00720	Citrate cycle (TCA cycle)
 K00926	map00910	Nitrogen metabolism
 K00927	map00710	Glycolysis / Gluconeogenesis
-K00928	map00300	Lysine biosynthesis
+K00928	map00300	Lys metabolism
 K00929	map00650	Butanoate metabolism
-K00931	map00330	Arginine and proline metabolism
+K00931	map00330	Arg-Pro metabolism
 K00936	Unknown	Unknown
 K00937	map03018	RNA degradation
-K00938	map00900	Terpenoid backbone biosynthesis
+K00938	map00900	Terpenoid biosynthesis
 K00939	map00230	Purine metabolism
 K00941	map00730	Thiamine metabolism
 K00942	map00230	Purine metabolism
@@ -256,22 +256,22 @@ K00950	map00790	Folate biosynthesis
 K00951	map00230	Purine metabolism
 K00954	map00770	Pantothenate and CoA biosynthesis
 K00962	map03018	RNA degradation
-K00963	map00520	Amino sugar and nucleotide sugar metabolism
-K00965	map00520	Amino sugar and nucleotide sugar metabolism
-K00969	map00760	Nicotinate and nicotinamide metabolism
+K00963	map00520	Amino sugar metabolism
+K00965	map00520	Amino sugar metabolism
+K00969	map00760	Vitamin B3 metabolism
 K00970	map03018	RNA degradation
-K00971	map00520	Amino sugar and nucleotide sugar metabolism
+K00971	map00520	Amino sugar metabolism
 K00973	map00523	Polyketide sugar unit biosynthesis
 K00974	map03013	RNA transport
-K00975	map00520	Amino sugar and nucleotide sugar metabolism
-K00979	map00540	Lipopolysaccharide biosynthesis
+K00975	map00520	Amino sugar metabolism
+K00979	map00540	LPS biosynthesis
 K00980	map00564	Glycerophospholipid metabolism
 K00981	map04070	Glycerophospholipid metabolism
 K00982	Unknown	Unknown
 K00985	map00230	Purine metabolism
 K00986	Unknown	Unknown
 K00989	Unknown	Unknown
-K00991	map00900	Terpenoid backbone biosynthesis
+K00991	map00900	Terpenoid biosynthesis
 K00995	map00564	Glycerophospholipid metabolism
 K00997	map00770	Pantothenate and CoA biosynthesis
 K00998	map00564	Glycerophospholipid metabolism
@@ -294,8 +294,8 @@ K01069	map00620	Pyruvate metabolism
 K01071	map00061	Fatty acid biosynthesis
 K01077	map02020	Two-component system
 K01078	map05152	Tuberculosis
-K01079	map00680	Glycine serine and threonine metabolism
-K01081	map00760	Nicotinate and nicotinamide metabolism
+K01079	map00680	Gly-Ser-Thr metabolism
+K01081	map00760	Vitamin B3 metabolism
 K01085	map00010	Glycolysis / Gluconeogenesis
 K01090	Unknown	Unknown
 K01091	map00630	Glyoxylate and dicarboxylate metabolism
@@ -328,7 +328,7 @@ K01191	map00511	Other glycan degradation
 K01195	map04142	Pentose and glucuronate interconversions
 K01200	Unknown	Unknown
 K01206	map00511	Other glycan degradation
-K01207	map00520	Amino sugar and nucleotide sugar metabolism
+K01207	map00520	Amino sugar metabolism
 K01208	map00500	Starch and sucrose metabolism
 K01215	Unknown	Unknown
 K01220	map00052	Galactose metabolism
@@ -336,13 +336,13 @@ K01227	map00511	Other glycan degradation
 K01232	map00500	Starch and sucrose metabolism
 K01234	Unknown	Unknown
 K01238	Unknown	Unknown
-K01239	map00760	Nicotinate and nicotinamide metabolism
-K01243	map00270	Cysteine and methionine metabolism
-K01251	map00270	Cysteine and methionine metabolism
+K01239	map00760	Vitamin B3 metabolism
+K01243	map00270	Cys-Met metabolism
+K01251	map00270	Cys-Met metabolism
 K01255	map00480	Glutathione metabolism
 K01256	map00480	Glutathione metabolism
 K01258	Unknown	Unknown
-K01259	map00330	Arginine and proline metabolism
+K01259	map00330	Arg-Pro metabolism
 K01262	Unknown	Unknown
 K01265	Unknown	Unknown
 K01267	Unknown	Unknown
@@ -382,22 +382,22 @@ K01428	map05120	Urease activity
 K01429	map00791	Atrazine degradation
 K01430	map00791	Atrazine degradation
 K01436	Unknown	Unknown
-K01438	map00330	Arginine and proline metabolism
-K01439	map00300	Lysine biosynthesis
-K01443	map00520	Amino sugar and nucleotide sugar metabolism
+K01438	map00330	Arg-Pro metabolism
+K01439	map00300	Lys metabolism
+K01443	map00520	Amino sugar metabolism
 K01446	Unknown	Unknown
 K01447	Unknown	Unknown
-K01448	Unknown	Unknown
+K01448	map05150	CAMP resistance
 K01451	map00360	Phenylalanine metabolism
-K01452	map00520	Amino sugar and nucleotide sugar metabolism
+K01452	map00520	Amino sugar metabolism
 K01462	Unknown	Unknown
 K01463	Unknown	Unknown
 K01465	map00240	Pyrimidine metabolism
 K01466	map00230	Purine metabolism
 K01467	map02020	Two-component system
-K01468	map00340	Histidine metabolism
-K01478	map00330	Arginine and proline metabolism
-K01485	map00330	Arginine and proline metabolism
+K01468	map00340	His metabolism
+K01478	map00330	Arg-Pro metabolism
+K01485	map00330	Arg-Pro metabolism
 K01486	map00230	Purine metabolism
 K01487	map00230	Purine metabolism
 K01488	map05340	Purine metabolism
@@ -425,15 +425,15 @@ K01579	map00770	Pantothenate and CoA biosynthesis
 K01580	map04940	ABC transporters
 K01581	map00480	Glutathione metabolism
 K01582	map00960	Lys metabolism
-K01585	map00330	Arginine and proline metabolism
-K01586	map00300	Lysine biosynthesis
+K01585	map00330	Arg-Pro metabolism
+K01586	map00300	Lys metabolism
 K01588	map00230	Purine metabolism
 K01589	map00230	Purine metabolism
 K01591	map00240	Pyrimidine metabolism
 K01595	map00720	Pyruvate metabolism
-K01597	map00900	Terpenoid backbone biosynthesis
+K01597	map00900	Terpenoid biosynthesis
 K01610	map00710	Glycolysis / Gluconeogenesis
-K01611	map00330	Arginine and proline metabolism
+K01611	map00330	Arg-Pro metabolism
 K01613	map00564	Glycerophospholipid metabolism
 K01615	map00650	Butanoate metabolism
 K01619	map00030	Pentose phosphate pathway
@@ -442,13 +442,13 @@ K01621	map00710	Pentose phosphate pathway
 K01624	map00710	Glycolysis / Gluconeogenesis
 K01625	map00630	Glyoxylate and dicarboxylate metabolism
 K01626	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
-K01627	map00540	Lipopolysaccharide biosynthesis
+K01627	map00540	LPS biosynthesis
 K01628	map00051	Fructose and mannose metabolism
 K01632	map00710	Pentose phosphate pathway
 K01633	map00790	Folate biosynthesis
 K01635	map00052	Galactose metabolism
-K01639	map00520	Amino sugar and nucleotide sugar metabolism
-K01641	map00900	Terpenoid backbone biosynthesis
+K01639	map00520	Amino sugar metabolism
+K01641	map00900	Terpenoid biosynthesis
 K01643	map02020	Two-component system
 K01644	map02020	Two-component system
 K01647	map00630	Glyoxylate and dicarboxylate metabolism
@@ -457,7 +457,7 @@ K01652	map00770	Pantothenate and CoA biosynthesis
 K01653	map00770	Pantothenate and CoA biosynthesis
 K01657	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
 K01661	map00130	Quinone biosynthesis
-K01662	map00900	Terpenoid backbone biosynthesis
+K01662	map00900	Terpenoid biosynthesis
 K01673	map00910	Nitrogen metabolism
 K01676	map00720	Citrate cycle (TCA cycle)
 K01679	map05211	Citrate cycle (TCA cycle)
@@ -467,15 +467,15 @@ K01686	map00040	Pentose and glucuronate interconversions
 K01687	map00770	Pantothenate and CoA biosynthesis
 K01689	map03018	RNA degradation
 K01696	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
-K01698	map00860	Porphyrin and chlorophyll metabolism
+K01698	map00860	Porphyrin metabolism
 K01703	map00660	C5-Branched dibasic acid metabolism
 K01710	map01055	Biosynthesis of vancomycin group antibiotics
-K01711	map00520	Amino sugar and nucleotide sugar metabolism
-K01712	map00340	Histidine metabolism
+K01711	map00520	Amino sugar metabolism
+K01712	map00340	His metabolism
 K01713	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
-K01714	map00300	Lysine biosynthesis
+K01714	map00300	Lys metabolism
 K01715	map00720	Fatty acid biosynthesis
-K01719	map00860	Porphyrin and chlorophyll metabolism
+K01719	map00860	Porphyrin metabolism
 K01726	map00903	Limonene and pinene degradation
 K01727	Unknown	Unknown
 K01733	map00750	Vitamin B6 metabolism
@@ -483,49 +483,49 @@ K01735	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
 K01736	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
 K01737	map00790	Folate biosynthesis
 K01738	map00920	Sulfur metabolism
-K01740	map00270	Cysteine and methionine metabolism
+K01740	map00270	Cys-Met metabolism
 K01744	map00910	Nitrogen metabolism
 K01745	map00910	Nitrogen metabolism
 K01746	map00670	One carbon pool by folate
 K01751	Unknown	Unknown
-K01752	map00270	Cysteine and methionine metabolism
+K01752	map00270	Cys-Met metabolism
 K01754	map00290	Valine, leucine and isoleucine biosynthesis
-K01755	map00330	Arginine and proline metabolism
+K01755	map00330	Arg-Pro metabolism
 K01756	map00250	Alanine, aspartate and glutamate metabolism
 K01758	map00910	Nitrogen metabolism
 K01759	map04011	MAPK signaling pathway - yeast
 K01761	map00450	Selenocompound metabolism
 K01771	map00562	Inositol phosphate metabolism
 K01772	map00860	Porphyrin metabolism
-K01775	map00473	Alanine aspartate and glutamate metabolism
-K01776	map00471	Alanine aspartate and glutamate metabolism
-K01778	map00300	Lysine biosynthesis
+K01775	map00473	Ala-Asp-Glu metabolism
+K01776	map00471	Ala-Asp-Glu metabolism
+K01778	map00300	Lys metabolism
 K01779	map00250	Alanine, aspartate and glutamate metabolism
 K01783	map00710	Pentose phosphate pathway
-K01784	map00520	Amino sugar and nucleotide sugar metabolism
+K01784	map00520	Amino sugar metabolism
 K01785	map00010	Glycolysis / Gluconeogenesis
 K01786	map00040	Pentose and glucuronate interconversions
-K01787	map00520	Amino sugar and nucleotide sugar metabolism
-K01788	map00520	Amino sugar and nucleotide sugar metabolism
+K01787	map00520	Amino sugar metabolism
+K01788	map00520	Amino sugar metabolism
 K01790	map00523	Polyketide sugar unit biosynthesis
-K01791	map00520	Amino sugar and nucleotide sugar metabolism
+K01791	map00520	Amino sugar metabolism
 K01795	Unknown	Unknown
 K01802	Unknown	Unknown
 K01803	map00710	Glycolysis / Gluconeogenesis
 K01805	map00051	Fructose and mannose metabolism
 K01807	map00710	Pentose phosphate pathway
 K01808	map00710	Pentose phosphate pathway
-K01809	map00520	Amino sugar and nucleotide sugar metabolism
-K01810	map00520	Amino sugar and nucleotide sugar metabolism
+K01809	map00520	Amino sugar metabolism
+K01810	map00520	Amino sugar metabolism
 K01812	map00040	Pentose and glucuronate interconversions
 K01819	map00052	Galactose metabolism
-K01823	map00900	Terpenoid backbone biosynthesis
+K01823	map00900	Terpenoid biosynthesis
 K01826	map00362	Benzoate degradation
 K01834	map00680	Glycolysis / Gluconeogenesis
 K01835	map00521	Streptomycin biosynthesis
 K01838	map00500	Starch and sucrose metabolism
 K01839	map00230	Purine metabolism
-K01840	map00520	Amino sugar and nucleotide sugar metabolism
+K01840	map00520	Amino sugar metabolism
 K01847	map00720	Citrate cycle (TCA cycle)
 K01848	map00720	Citrate cycle (TCA cycle)
 K01854	Unknown	Unknown
@@ -558,7 +558,7 @@ K01902	map00720	Citrate cycle (TCA cycle)
 K01903	map00720	Citrate cycle (TCA cycle)
 K01910	map02020	Two-component system
 K01914	map00910	Nitrogen metabolism
-K01915	map04724	Alanine aspartate and glutamate metabolism
+K01915	map04724	Ala-Asp-Glu metabolism
 K01916	map00910	Nitrogen metabolism
 K01918	map00770	Pantothenate and CoA biosynthesis
 K01921	map00550	Peptidoglycan biosynthesis
@@ -575,9 +575,9 @@ K01935	map00780	Biotin metabolism
 K01937	map00240	Pyrimidine metabolism
 K01938	map00720	One carbon pool by folate
 K01939	map00250	Alanine, aspartate and glutamate metabolism
-K01940	map00330	Arginine and proline metabolism
+K01940	map00330	Arg-Pro metabolism
 K01945	map00230	Purine metabolism
-K01950	map00760	Nicotinate and nicotinamide metabolism
+K01950	map00760	Vitamin B3 metabolism
 K01951	map00983	Drug metabolism - other enzymes
 K01952	map00230	Purine metabolism
 K01953	map00910	Nitrogen metabolism
@@ -667,14 +667,14 @@ K02120	map00680	Oxidative phosphorylation
 K02122	map00680	Oxidative phosphorylation
 K02123	map00680	Oxidative phosphorylation
 K02124	map00680	Oxidative phosphorylation
-K02190	map00860	Porphyrin and chlorophyll metabolism
+K02190	map00860	Porphyrin metabolism
 K02217	Unknown	Iron acquisition
 K02221	Unknown	Unknown
-K02224	map00860	Porphyrin and chlorophyll metabolism
-K02227	map00860	Porphyrin and chlorophyll metabolism
-K02230	map00860	Porphyrin and chlorophyll metabolism
-K02232	map00860	Porphyrin and chlorophyll metabolism
-K02234	map00860	Porphyrin and chlorophyll metabolism
+K02224	map00860	Porphyrin metabolism
+K02227	map00860	Porphyrin metabolism
+K02230	map00860	Porphyrin metabolism
+K02232	map00860	Porphyrin metabolism
+K02234	map00860	Porphyrin metabolism
 K02237	Unknown	Extracellular DNA uptake
 K02238	Unknown	Unknown
 K02240	Unknown	Unknown
@@ -703,7 +703,7 @@ K02357	Unknown	Unknown
 K02358	map04626	Translation
 K02361	map01053	Biosynthesis of siderophore group nonribosomal peptides
 K02372	map00061	Fatty acid biosynthesis
-K02377	map00520	Amino sugar and nucleotide sugar metabolism
+K02377	map00520	Amino sugar metabolism
 K02387	map02040	Flagellar assembly
 K02388	map02040	Flagellar assembly
 K02390	map02040	Flagellar assembly
@@ -736,7 +736,7 @@ K02445	Unknown	Unknown
 K02446	map00710	Glycolysis / Gluconeogenesis
 K02469	Unknown	Unknown
 K02470	Unknown	Unknown
-K02474	map00520	Amino sugar and nucleotide sugar metabolism
+K02474	map00520	Amino sugar metabolism
 K02477	Unknown	Unknown
 K02478	Unknown	Unknown
 K02479	Unknown	Unknown
@@ -744,28 +744,28 @@ K02481	Unknown	Unknown
 K02483	Unknown	Unknown
 K02484	Unknown	Unknown
 K02493	Unknown	Unknown
-K02495	map00860	Porphyrin and chlorophyll metabolism
+K02495	map00860	Porphyrin metabolism
 K02499	Unknown	Unknown
 K02503	Unknown	Unknown
 K02507	Unknown	Unknown
-K02517	map00540	Lipopolysaccharide biosynthesis
+K02517	map00540	LPS biosynthesis
 K02518	Unknown	Unknown
 K02519	Unknown	Unknown
 K02520	Unknown	Unknown
-K02523	map00900	Terpenoid backbone biosynthesis
+K02523	map00900	Terpenoid biosynthesis
 K02525	Unknown	Unknown
 K02526	Unknown	Unknown
-K02527	map00540	Lipopolysaccharide biosynthesis
+K02527	map00540	LPS biosynthesis
 K02528	Unknown	Unknown
 K02529	Unknown	Unknown
 K02530	Unknown	Lactose metabolism
-K02535	map00540	Lipopolysaccharide biosynthesis
-K02536	map00540	Lipopolysaccharide biosynthesis
+K02535	map00540	LPS biosynthesis
+K02536	map00540	LPS biosynthesis
 K02548	map00130	Vitamin K2 biosynthesis
 K02556	map02040	Flagellar assembly
 K02557	map02040	Flagellar assembly
 K02563	map04112	Peptidoglycan biosynthesis
-K02564	map00520	Amino sugar and nucleotide sugar metabolism
+K02564	map00520	Amino sugar metabolism
 K02565	Unknown	Unknown
 K02587	map00910	Nitrogen metabolism
 K02588	map00910	Nitrogen metabolism
@@ -776,32 +776,32 @@ K02622	Unknown	Unknown
 K02647	Unknown	Unknown
 K02652	Unknown	Unknown
 K02687	Unknown	Unknown
-K02744	map02060	Phosphotransferase system (PTS)
-K02745	map02060	Phosphotransferase system (PTS)
-K02746	map02060	Phosphotransferase system (PTS)
-K02747	map02060	Phosphotransferase system (PTS)
-K02750	map02060	Phosphotransferase system (PTS)
-K02760	map02060	Phosphotransferase system (PTS)
-K02761	map02060	Phosphotransferase system (PTS)
-K02768	map02060	Phosphotransferase system (PTS)
-K02770	map02060	Phosphotransferase system (PTS)
-K02773	map02060	Phosphotransferase system (PTS)
-K02774	map02060	Phosphotransferase system (PTS)
-K02775	map02060	Phosphotransferase system (PTS)
-K02777	map02060	Phosphotransferase system (PTS)
-K02781	map02060	Phosphotransferase system (PTS)
-K02784	map02060	Phosphotransferase system (PTS)
-K02786	map02060	Phosphotransferase system (PTS)
-K02788	map02060	Phosphotransferase system (PTS)
-K02791	map02060	Phosphotransferase system (PTS)
-K02793	map02060	Phosphotransferase system (PTS)
-K02794	map02060	Phosphotransferase system (PTS)
-K02795	map02060	Phosphotransferase system (PTS)
-K02796	map02060	Phosphotransferase system (PTS)
-K02804	map02060	Phosphotransferase system (PTS)
-K02806	map02060	Phosphotransferase system (PTS)
-K02821	map02060	Phosphotransferase system (PTS)
-K02822	map02060	Phosphotransferase system (PTS)
+K02744	map02060	Phosphotransferase system
+K02745	map02060	Phosphotransferase system
+K02746	map02060	Phosphotransferase system
+K02747	map02060	Phosphotransferase system
+K02750	map02060	Phosphotransferase system
+K02760	map02060	Phosphotransferase system
+K02761	map02060	Phosphotransferase system
+K02768	map02060	Phosphotransferase system
+K02770	map02060	Phosphotransferase system
+K02773	map02060	Phosphotransferase system
+K02774	map02060	Phosphotransferase system
+K02775	map02060	Phosphotransferase system
+K02777	map02060	Phosphotransferase system
+K02781	map02060	Phosphotransferase system
+K02784	map02060	Phosphotransferase system
+K02786	map02060	Phosphotransferase system
+K02788	map02060	Phosphotransferase system
+K02791	map02060	Phosphotransferase system
+K02793	map02060	Phosphotransferase system
+K02794	map02060	Phosphotransferase system
+K02795	map02060	Phosphotransferase system
+K02796	map02060	Phosphotransferase system
+K02804	map02060	Phosphotransferase system
+K02806	map02060	Phosphotransferase system
+K02821	map02060	Phosphotransferase system
+K02822	map02060	Phosphotransferase system
 K02823	Unknown	Unknown
 K02824	Unknown	Unknown
 K02825	map00240	Pyrimidine metabolism
@@ -908,11 +908,11 @@ K03210	map03070	Bacterial secretion system
 K03216	Unknown	Unknown
 K03217	map03070	Bacterial secretion system
 K03218	Unknown	Unknown
-K03269	map00540	Lipopolysaccharide biosynthesis
-K03270	map00540	Lipopolysaccharide biosynthesis
-K03271	map00540	Lipopolysaccharide biosynthesis
-K03272	map00540	Lipopolysaccharide biosynthesis
-K03273	map00540	Lipopolysaccharide biosynthesis
+K03269	map00540	LPS biosynthesis
+K03270	map00540	LPS biosynthesis
+K03271	map00540	LPS biosynthesis
+K03272	map00540	LPS biosynthesis
+K03273	map00540	LPS biosynthesis
 K03281	Unknown	Unknown
 K03282	Unknown	Osmotic stress adaptation
 K03284	Unknown	Magnesium transport
@@ -940,10 +940,10 @@ K03322	Unknown	Manganese acquisition
 K03324	Unknown	Unknown
 K03327	Unknown	Unknown
 K03328	Unknown	Unknown
-K03340	map00300	Lysine biosynthesis
+K03340	map00300	Lys metabolism
 K03346	Unknown	Unknown
 K03364	map04914	Progesterone-mediated oocyte maturation
-K03367	map05150	Cationic antimicrobial peptide (CAMP) resistance
+K03367	map05150	CAMP resistance
 K03386	Unknown	Unknown
 K03387	Unknown	Unknown
 K03402	Unknown	Unknown
@@ -958,7 +958,7 @@ K03415	map02030	Bacterial chemotaxis
 K03424	Unknown	Unknown
 K03427	Unknown	Unknown
 K03429	map00561	Glycerolipid metabolism
-K03431	map00520	Amino sugar and nucleotide sugar metabolism
+K03431	map00520	Amino sugar metabolism
 K03436	map00051	Fructose metabolism
 K03437	Unknown	Unknown
 K03438	Unknown	Unknown
@@ -973,7 +973,7 @@ K03466	Unknown	Unknown
 K03469	map03030	DNA replication
 K03470	map03030	DNA replication
 K03471	map03030	DNA replication
-K03475	map02060	Phosphotransferase system (PTS)
+K03475	map02060	Phosphotransferase system
 K03476	map00053	Ascorbate and aldarate metabolism
 K03478	Unknown	Unknown
 K03481	Unknown	Unknown
@@ -987,14 +987,14 @@ K03498	Unknown	Unknown
 K03499	Unknown	Unknown
 K03500	Unknown	Unknown
 K03501	Unknown	Unknown
-K03517	map00760	Nicotinate and nicotinamide metabolism
+K03517	map00760	Vitamin B3 metabolism
 K03521	Unknown	Unknown
 K03522	Unknown	Unknown
 K03523	Unknown	Unknown
 K03524	map00780	Biotin metabolism
 K03525	map00770	Pantothenate and CoA biosynthesis
-K03526	map00900	Terpenoid backbone biosynthesis
-K03527	map00900	Terpenoid backbone biosynthesis
+K03526	map00900	Terpenoid biosynthesis
+K03527	map00900	Terpenoid biosynthesis
 K03529	Unknown	Unknown
 K03530	Unknown	Unknown
 K03531	map04112	Cell division
@@ -1092,8 +1092,8 @@ K03727	Unknown	Unknown
 K03733	Unknown	Unknown
 K03734	Unknown	Unknown
 K03737	map00720	Citrate cycle (TCA cycle)
-K03739	map05150	Cationic antimicrobial peptide (CAMP) resistance
-K03740	map05150	Cationic antimicrobial peptide (CAMP) resistance
+K03739	map05150	CAMP resistance
+K03740	map05150	CAMP resistance
 K03742	Unknown	Unknown
 K03743	Unknown	Unknown
 K03744	Unknown	Unknown
@@ -1107,10 +1107,10 @@ K03771	Unknown	Unknown
 K03773	Unknown	Unknown
 K03775	Unknown	Unknown
 K03778	map00620	Pyruvate metabolism
-K03783	map00760	Nicotinate and nicotinamide metabolism
-K03784	map00760	Nicotinate and nicotinamide metabolism
+K03783	map00760	Vitamin B3 metabolism
+K03784	map00760	Vitamin B3 metabolism
 K03785	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
-K03787	map00760	Nicotinate and nicotinamide metabolism
+K03787	map00760	Vitamin B3 metabolism
 K03788	map00740	Riboflavin metabolism
 K03789	Unknown	Unknown
 K03797	Unknown	Unknown
@@ -1137,7 +1137,7 @@ K03979	Unknown	Unknown
 K03980	map00550	Peptidoglycan biosynthesis
 K04027	Unknown	Unknown
 K04041	map00710	Glycolysis / Gluconeogenesis
-K04042	map00520	Amino sugar and nucleotide sugar metabolism
+K04042	map00520	Amino sugar metabolism
 K04043	map05152	Molecular chaperones
 K04047	Unknown	Unknown
 K04066	map03440	Homologous recombination
@@ -1164,7 +1164,7 @@ K04567	map00970	Aminoacyl-tRNA biosynthesis
 K04654	Unknown	Unknown
 K04655	Unknown	Unknown
 K04656	Unknown	Unknown
-K04720	map00860	Porphyrin and chlorophyll metabolism
+K04720	map00860	Porphyrin metabolism
 K04744	Unknown	Unknown
 K04753	Unknown	Unknown
 K04758	Unknown	Unknown
@@ -1206,8 +1206,8 @@ K05896	Unknown	Unknown
 K05905	Unknown	Unknown
 K05910	Unknown	Unknown
 K05919	Unknown	Unknown
-K05934	map00860	Porphyrin and chlorophyll metabolism
-K05936	map00860	Porphyrin and chlorophyll metabolism
+K05934	map00860	Porphyrin metabolism
+K05936	map00860	Porphyrin metabolism
 K05946	Unknown	Unknown
 K05968	Unknown	Unknown
 K05985	Unknown	Unknown
@@ -1452,17 +1452,17 @@ K08316	Unknown	Unknown
 K08368	Unknown	Unknown
 K08369	Unknown	Unknown
 K08372	map02020	Two-component system
-K08483	map02060	Phosphotransferase system (PTS)
+K08483	map02060	Phosphotransferase system
 K08590	Unknown	Unknown
 K08591	map00564	Glycerophospholipid metabolism
 K08602	Unknown	Unknown
 K08659	Unknown	Unknown
 K08681	map00750	Vitamin B6 metabolism
-K08722	map00760	Nicotinate and nicotinamide metabolism
+K08722	map00760	Vitamin B3 metabolism
 K08724	map00550	Peptidoglycan biosynthesis
 K08728	map00240	Pyrimidine metabolism
 K08884	Unknown	Unknown
-K08963	map00270	Cysteine and methionine metabolism
+K08963	map00270	Cys-Met metabolism
 K08986	Unknown	Unknown
 K08998	Unknown	Unknown
 K09013	Unknown	Unknown
@@ -1537,7 +1537,7 @@ K10117	map02010	ABC transporters
 K10118	map02010	ABC transporters
 K10119	map02010	ABC transporters
 K10200	map02010	ABC transporters
-K10206	map00300	Lysine biosynthesis
+K10206	map00300	Lys metabolism
 K10231	Unknown	Unknown
 K10243	map02010	ABC transporters
 K10254	Unknown	Unknown
@@ -1555,8 +1555,8 @@ K10672	Unknown	Unknown
 K10678	map00633	Nitrotoluene degradation
 K10742	map03030	DNA replication
 K10773	map03410	Base excision repair
-K10793	map00330	Arginine and proline metabolism
-K10794	map00330	Arginine and proline metabolism
+K10793	map00330	Arg-Pro metabolism
+K10794	map00330	Arg-Pro metabolism
 K10819	Unknown	Unknown
 K10834	Unknown	Unknown
 K10907	Unknown	Unknown
@@ -1577,7 +1577,7 @@ K11175	map00670	One carbon pool by folate
 K11189	Unknown	Unknown
 K11203	Unknown	Unknown
 K11263	map00061	Fatty acid biosynthesis
-K11358	map00960	Alanine aspartate and glutamate metabolism
+K11358	map00960	Ala-Asp-Glu metabolism
 K11473	map00630	Glyoxylate and dicarboxylate metabolism
 K11475	Unknown	Unknown
 K11533	map00061	Fatty acid biosynthesis
@@ -1601,9 +1601,9 @@ K12264	Unknown	Unknown
 K12267	Unknown	Unknown
 K12297	Unknown	Unknown
 K12373	map04142	Lysosome
-K12410	map00520	Amino sugar and nucleotide sugar metabolism
-K12506	map00900	Terpenoid backbone biosynthesis
-K12524	map00300	Lysine biosynthesis
+K12410	map00520	Amino sugar metabolism
+K12506	map00900	Terpenoid biosynthesis
+K12524	map00300	Lys metabolism
 K12555	map00550	Peptidoglycan biosynthesis
 K12573	map03018	RNA degradation
 K12574	map03018	RNA degradation
@@ -1629,10 +1629,10 @@ K13641	Unknown	Unknown
 K13678	Unknown	Unknown
 K13685	Unknown	Unknown
 K13694	Unknown	Unknown
-K13747	map00330	Arginine and proline metabolism
-K13787	map00900	Terpenoid backbone biosynthesis
+K13747	map00330	Arg-Pro metabolism
+K13787	map00900	Terpenoid biosynthesis
 K13788	map00720	Citrate cycle (TCA cycle)
-K13789	map00900	Terpenoid backbone biosynthesis
+K13789	map00900	Terpenoid biosynthesis
 K13829	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
 K13867	map04974	Protein digestion and absorption
 K13922	map00561	Glycerolipid metabolism
@@ -1644,8 +1644,8 @@ K14051	map02024	Quorum sensing
 K14059	Unknown	Unknown
 K14155	map00920	Sulfur metabolism
 K14170	map00400	Phenylalanine, tyrosine and tryptophan biosynthesis
-K14188	map05150	Cationic antimicrobial peptide (CAMP) resistance
-K14205	map05150	Cationic antimicrobial peptide (CAMP) resistance
+K14188	map05150	CAMP resistance
+K14205	map05150	CAMP resistance
 K14260	map00290	Valine, leucine and isoleucine biosynthesis
 K14327	map03015	mRNA surveillance pathway
 K14441	Unknown	Unknown
