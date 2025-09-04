@@ -147,12 +147,6 @@ genes.s.5 <- sc.0.clr.all %>%
 genes.plot <- rbind(genes.ns, genes.s.0, genes.s.1, genes.s.2, genes.s.5) %>% 
   mutate(title = "Memory T cells vs. Cytotoxic T cells: ALDEx2", qval = -log10(we.eBH))
 
-# convert scale column to factor and reorder levels for correct order
-lvls <- levels(factor(genes.plot$scale))
-
-genes.plot$scale <- factor(genes.plot$scale, 
-                           levels = c(lvls[1], lvls[5], lvls[2], lvls[3], lvls[4]))
-
 # some q values are either Inf or incredibly small (>265), so change these to
 # an appropriate 'max' value to display on plot (next largest value is 32, so
 # change these to 35)
@@ -173,13 +167,13 @@ leg.size <- c("ns" = 1, "s0" = 1.5, "s1" = 1.5, "s2" = 1.5, "s5" = 1.5)
 ggplot(data = genes.plot, aes(x = diff.btw, y = qval))+
   geom_point(aes(fill = scale, size = scale, shape = scale, alpha = scale), colour = "black", stroke = 0.25)+
   scale_fill_manual(name = "Genes", values = leg.col, breaks = c("ns", "s0", "s1", "s2", "s5"), 
-                    labels = c("Not signif.", "Signif. (\u03b3 = 0)", "Signif. (\u03b3 = 0.1)", "Signif. (\u03b3 = 0.2)", "Signif. (\u03b3 = 0.5)"),)+
+                    labels = c("Not significant", "\u03b3 = 0", "\u03b3 = 0.1", "\u03b3 = 0.2", "\u03b3 = 0.5"),)+
   scale_shape_manual(name = "Genes", values = leg.shape, breaks = c("ns", "s0", "s1", "s2", "s5"), 
-                    labels = c("Not signif.", "Signif. (\u03b3 = 0)", "Signif. (\u03b3 = 0.1)", "Signif. (\u03b3 = 0.2)", "Signif. (\u03b3 = 0.5)"),)+
+                     labels = c("Not significant", "\u03b3 = 0", "\u03b3 = 0.1", "\u03b3 = 0.2", "\u03b3 = 0.5"),)+
   scale_size_manual(name = "Genes", values = leg.size, breaks = c("ns", "s0", "s1", "s2", "s5"), 
-                    labels = c("Not signif.", "Signif. (\u03b3 = 0)", "Signif. (\u03b3 = 0.1)", "Signif. (\u03b3 = 0.2)", "Signif. (\u03b3 = 0.5)"),)+
+                    labels = c("Not significant", "\u03b3 = 0", "\u03b3 = 0.1", "\u03b3 = 0.2", "\u03b3 = 0.5"),)+
   scale_alpha_manual(name = "Genes", values = leg.alpha, breaks = c("ns", "s0", "s1", "s2", "s5"), 
-                    labels = c("Not signif.", "Signif. (\u03b3 = 0)", "Signif. (\u03b3 = 0.1)", "Signif. (\u03b3 = 0.2)", "Signif. (\u03b3 = 0.5)"),)+
+                     labels = c("Not significant", "\u03b3 = 0", "\u03b3 = 0.1", "\u03b3 = 0.2", "\u03b3 = 0.5"),)+
   geom_vline(xintercept = 0, linetype = 2, linewidth = 0.25, colour = "blue")+
   geom_hline(yintercept = -log10(0.05), linetype = 2, linewidth = 0.25, colour = "blue")+
   labs(x = expression("Log"[2]*" difference between groups"), y = expression("-Log"[10]*" adjusted P-value"))+
