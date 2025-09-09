@@ -27,20 +27,20 @@ library(ggnewscale)
 
 # read in feature table, metadata, KO term -> pathway lookup table and virgo
 # gene -> KO term lookup table from this study's repository
-url.gene <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_counts.txt"
+url.gene <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/mts_counts.txt"
 mts.gene <- read.table(url.gene, sep = "\t", header = T, quote = "", row.names = 1)
 
 # NOTE 1: this feature table has already undergone batch-correction using the
 #         ComBat_seq function from the 'sva' package to correct for batch
 #         effects introduced by the inclusion of samples from different studies
 
-url.meta <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_metadata.txt"
+url.meta <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/mts_metadata.txt"
 mts.meta <- read.table(url.meta, sep = "\t", header = T, quote = "", row.names = 1)
 
-url.func <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_KOlookup.txt"
+url.func <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/mts_KOlookup.txt"
 mts.func <- read.table(url.func, sep = "\t", header = T, quote = "", row.names = 1)
 
-url.virg <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/virgo_kegg_ortholog.txt"
+url.virg <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/mts_virgo_KOs.txt"
 mts.virg <- read.table(url.virg, sep = "\t", header = F, quote = "", row.names = 1)
 # NOTE 2: this is identical to the file '8.A.kegg.ortholog.txt' provided in the
 #         VIRGO github repo
@@ -93,13 +93,13 @@ if(scratch == TRUE){
   scale.0.clr.t <- aldex.ttest(clr = scale.0.clr, verbose = TRUE)
   
   scale.0.clr.all <- cbind(scale.0.clr.e, scale.0.clr.t)
-  # save(scale.0.clr.all, file = "~/Documents/GitHub/currprotSDS/data/metatranscriptome_scale0.Rda")
-  # save(bg.scale.0, file = "~/Documents/GitHub/currprotSDS/data/metatranscriptome_bgScale0.Rda")
+  # save(scale.0.clr.all, file = "~/Documents/GitHub/currprotSDS/data/mts_scale0.Rda")
+  # save(bg.scale.0, file = "~/Documents/GitHub/currprotSDS/data/mts_bgScale0.Rda")
   
 } else{
   
-  url.scale0 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_scale0.Rda"
-  url.bgScale0 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_bgScale0.Rda"
+  url.scale0 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/mts_scale0.Rda"
+  url.bgScale0 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/mts_bgScale0.Rda"
   load(url(url.scale0))
   load(url(url.bgScale0))
   
@@ -177,11 +177,11 @@ if(scratch == TRUE){
   scale.5.clr.t <- aldex.ttest(clr = scale.5.clr, verbose = TRUE)
   
   scale.5.clr.all <- cbind(scale.5.clr.e, scale.5.clr.t)
-  # save(scale.5.clr.all, file = "~/Documents/GitHub/currprotSDS/data/metatranscriptome_scale5.Rda")
+  # save(scale.5.clr.all, file = "~/Documents/GitHub/currprotSDS/data/mts_scale5.Rda")
   
 } else{
   
-  url.scale5 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_scale5.Rda"
+  url.scale5 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/mts_scale5.Rda"
   load(url(url.scale5))
   
 }
@@ -290,11 +290,11 @@ if(scratch == TRUE){
   scale.f.clr.t <- aldex.ttest(clr = scale.f.clr, verbose = TRUE)
   
   scale.f.clr.all <- cbind(scale.f.clr.e, scale.f.clr.t)
-  save(scale.f.clr.all, file = "~/Documents/GitHub/currprotSDS/data/metatranscriptome_scaleFull.Rda")
+  save(scale.f.clr.all, file = "~/Documents/GitHub/currprotSDS/data/mts_scaleFull.Rda")
   
 } else{
   
-  url.scaleFull <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_scaleFull.Rda"
+  url.scaleFull <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/mts_scaleFull.Rda"
   load(url(url.scaleFull))
   
 }
