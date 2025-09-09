@@ -30,6 +30,10 @@ library(ggnewscale)
 url.gene <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_counts.txt"
 mts.gene <- read.table(url.gene, sep = "\t", header = T, quote = "", row.names = 1)
 
+# NOTE 1: this feature table has already undergone batch-correction using the
+#         ComBat_seq function from the 'sva' package to correct for batch
+#         effects introduced by the inclusion of samples from different studies
+
 url.meta <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_metadata.txt"
 mts.meta <- read.table(url.meta, sep = "\t", header = T, quote = "", row.names = 1)
 
@@ -38,8 +42,8 @@ mts.func <- read.table(url.func, sep = "\t", header = T, quote = "", row.names =
 
 url.virg <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/virgo_kegg_ortholog.txt"
 mts.virg <- read.table(url.virg, sep = "\t", header = F, quote = "", row.names = 1)
-# NOTE: this is identical to the file '8.A.kegg.ortholog.txt' provided in the
-#       VIRGO github repo
+# NOTE 2: this is identical to the file '8.A.kegg.ortholog.txt' provided in the
+#         VIRGO github repo
 
 # indicate whether to generate files from scratch or load .Rda from github
 # (default, set to FALSE)
@@ -81,6 +85,8 @@ if(scratch == TRUE){
   scale.0.clr <- aldex.clr(reads = mts.ko, conds = mts.meta$group, mc.samples = 128,
                            denom = "all", gamma = 1e-3, verbose = TRUE)
   
+  bg.scale.0 <- scale.0.clr@scaleSamps
+  
   scale.0.clr.e <- aldex.effect(clr = scale.0.clr, verbose = TRUE,
                                 include.sample.summary = TRUE)
   
@@ -88,11 +94,14 @@ if(scratch == TRUE){
   
   scale.0.clr.all <- cbind(scale.0.clr.e, scale.0.clr.t)
   # save(scale.0.clr.all, file = "~/Documents/GitHub/currprotSDS/data/metatranscriptome_scale0.Rda")
+  # save(bg.scale.0, file = "~/Documents/GitHub/currprotSDS/data/metatranscriptome_bgScale0.Rda")
   
 } else{
   
   url.scale0 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_scale0.Rda"
+  url.bgScale0 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/metatranscriptome_bgScale0.Rda"
   load(url(url.scale0))
+  load(url(url.bgScale0))
   
 }
   
@@ -218,7 +227,42 @@ ggplot(data = scale5.ns, aes(x = diff.win, y = diff.btw))+
 # this looks largely the same as the previous model (with virtually no scale
 # uncertainty). Perhaps a few features along the line of equivalence between
 # diff within and diff between are no longer 'significant', but the problematic
-# asymmetry is still present
+# asymmetry is still present. We will need to use an informed scale model to
+# correct this, but first we should examine the background scale of the data
+# we're working with from the scale-naïve model
+
+# the 'scaleSamps' element of the 'aldex.clr()' output contains all scale 
+# estimates used for each sample across all Monte-Carlo instances: the mean of
+# the rows for all samples belonging to a given condition corresponds to the 
+# background scale values for each sample
+bg.scale.h.0 <- mean(rowMeans(bg.scale.0)[which(mts.meta$group == "Healthy")])
+bg.scale.bv.0 <-mean(rowMeans(bg.scale.0)[which(mts.meta$group == "BV")])
+
+# calculate mean difference in scale between groups (values as-is are log2)
+abs(bg.scale.h.0 - bg.scale.bv.0) # 3.005442
+2^abs(bg.scale.h.0 - bg.scale.bv.0) # approximately 8-fold difference in scale
+
+# this 8-fold difference in scale results in the housekeeping functions being
+# very off-centre. We can calculate the log scale difference between groups
+# for just the housekeeping genes to get an idea of the values we need to feed
+# to the 'mu' argument of aldex.makeScaleMatrix()
+mts.ko.hk <- mts.ko[hk.func,]
+
+set.seed(2025)
+hk.clr <- aldex.clr(reads = mts.ko.hk, conds = mts.meta$group, mc.samples = 128,
+                    denom = "all", gamma = 1e-3, verbose = TRUE)
+
+bg.scale.hk <- hk.clr@scaleSamps
+bg.scale.h.hk <- mean(rowMeans(bg.scale.hk)[which(mts.meta$group == "Healthy")])
+bg.scale.bv.hk <- mean(rowMeans(bg.scale.hk)[which(mts.meta$group == "BV")])
+
+# what is the relative difference in log scale as a ratio?
+bg.scale.h.hk / bg.scale.bv.hk # 1.141893
+
+# there is approximately a 14 % difference in scale between the off-centre HK
+# functions which we know should be invariant between groups. This ratio (i.e.
+# 1: 1.14) will be used in an informed scale model to resolve the data asymmetry
+# problem
 
 ############################## scale model: full ##############################
 
@@ -227,14 +271,14 @@ ggplot(data = scale5.ns, aes(x = diff.win, y = diff.btw))+
 # few HK functions towards the centre, it did not address the issue at large;
 # therefore, we have to use a full scale model to really rectify the issue
 
-# full scale model: add a 15% difference in scale between groups
+# full scale model: add a 14 % difference in scale between groups
 if(scratch == TRUE){
   
   # make matrix of scale values to pass to ALDEx2; absolute values given
   # to mu parameter do not matter, but ratio of the values DOES (i.e. c(1,5) is
   # would give the same result on the MW plot as c(5,25), using the same seed)
   set.seed(2025)
-  scale.f <- aldex.makeScaleMatrix(gamma = 0.5, mu = c(1,1.15),
+  scale.f <- aldex.makeScaleMatrix(gamma = 0.5, mu = c(1,1.14),
                                    conditions = mts.meta$group, mc.samples = 128)
   
   scale.f.clr <- aldex.clr(reads = mts.ko, conds = mts.meta$group, mc.samples = 128,
@@ -261,11 +305,11 @@ scalef.s <- scale.f.clr.all %>%
 
 scalef.ns <- scale.f.clr.all %>% 
   filter(we.eBH >= 0.05) %>% 
-  mutate(title = "Metatranscriptome: ALDEx2 dispersion vs. difference (\u03b3 = 0.5, \u03bc = 15 %)")
+  mutate(title = "Metatranscriptome: ALDEx2 dispersion vs. difference (\u03b3 = 0.5, \u03bc = 14 %)")
 
 scalef.hk <- scale.f.clr.all[hk.func,]
 
-# plot scale = 0.5, difference = 15 %
+# plot scale = 0.5, difference = 14 %
 # png("~/Documents/GitHub/currprotSDS/figs/mts_effect_scaleFull.png",
 #     units = "in", height = 3, width = 5, res = 600)
 
@@ -293,7 +337,7 @@ ggplot(data = scalef.ns, aes(x = diff.win, y = diff.btw))+
 
 # dev.off()
 
-# adding a scale difference of just 15% between groups fixes the asymmetry 
+# adding a scale difference of just 14 % between groups fixes the asymmetry 
 # entirely! HK genes are now centred around the line of no-difference. As a 
 # result, many functions previously deemed to be significantly upregulated in
 # the healthy group are no longer so; likewise, many genes previously deemed to
@@ -301,7 +345,7 @@ ggplot(data = scalef.ns, aes(x = diff.win, y = diff.btw))+
 # group. For datasets like this, where there is a marked disparity in both gene
 # content and scale between conditions, a full-scale model is appropriate
 
-############################## visualisation: PCA ##############################
+########################### bonus visualisation: PCA ###########################
 
 # multiple different dimensionality reduction methods are in widespread use for 
 # visualising beta-diversity among microbiomes. Singular value decomposition of
@@ -362,7 +406,7 @@ codaSeq.PCAplot(pca.f, plot.groups = T, plot.loadings = T, plot.density = "group
                 PC = c(1,2), grp = ind.grp, grp.col = cols.group, grp.cex = 0.75,
                 load.grp = ind.load, load.col = cols.load, load.sym = 19, load.cex = 0.6,
                 plot.legend = "loadings", leg.position = "bottomright", leg.columns = 2, leg.cex = 0.625,
-                title = "Vaginal metatranscriptome: PCA plot (\u03b3 = 0.5, \u03bc = 15 %)")
+                title = "Vaginal metatranscriptome: PCA plot (\u03b3 = 0.5, \u03bc = 14 %)")
 
 # dev.off()
 
@@ -390,7 +434,7 @@ for(i in 1:length(ind.grp)){
   load.f.samp[ind.grp[[i]], "group"] <- names(ind.grp)[i]
 }
 
-load.f.samp$title <- "Vaginal metatranscriptome: PCA plot (\u03b3 = 0.5, \u03bc = 15 %)"
+load.f.samp$title <- "Vaginal metatranscriptome: PCA plot (\u03b3 = 0.5, \u03bc = 14 %)"
 
 # make vector for ensuring order of grouping colours and changing legend symbol
 grp_labels<- c(Healthy = "h", BV = "v")
