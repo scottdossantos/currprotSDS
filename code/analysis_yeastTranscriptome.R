@@ -89,6 +89,9 @@ if(scratch == TRUE){
   url.scale5 <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/yeast_scale5.Rda"
   load(url(url.scale5))
   
+  url.sens <- "https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/yeast_sensitivity.Rda"
+  load(url(url.sens))
+  
 }
 
 # convert BH-corrected P values into -log10()
@@ -335,5 +338,94 @@ p4.edit <- ggplot(data = subset.all.5, aes(x = diff.win, y = diff.btw))+
         legend.box.spacing = unit(0,"cm"), legend.key.width = unit(0.2,"cm"))
 
 p3 | p4.edit
+
+# dev.off()
+
+################################# sensitivity analysis #################################
+
+# ALDEx2 has a built in function for assessing the effect of gamma values on the
+# number of significant transcripts. ALDEx2 is run several times with a user-
+# specified selection of gamma values and the effect sizes for each feature are
+# plotted against the gamma values as individual lines. Lines are plotted in
+# black up until the BH-corrected P-value for a given feature drops below the
+# user-defined significance threshold, whereupon the line turns grey.
+
+plotGamma(yst.sens, test = "t", thresh = 0.05, blackWhite = T)
+
+# these data can be extracted from the sensitivity analysis output and plotted
+# with ggplot2 for more control over the appearance
+
+# obtain data in tidy format
+yst.gamma <- do.call(rbind, yst.sens)
+yst.gamma$gamma <- rep(c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0), each = 5891)
+yst.gamma <- yst.gamma %>% 
+  select(c(diff.btw, diff.win, we.eBH, effect, gamma))
+
+# create gene label
+yst.gamma$gene <- rownames(yst.gamma)
+yst.gamma$gene <- gsub("gamma_0\\..*\\.", "", yst.gamma$gene)
+yst.gamma$gene <- gsub("gamma_1\\.", "", yst.gamma$gene)
+length(levels(factor(yst.gamma$gene))) == nrow(yst.gene) # TRUE
+
+# want to make a data frame contaning start and end values for line segments
+# showing each gene's effect sizes between two gamma values, from 1e0-3 to 0.1,
+# all the way to 0.75 to 1.0 need data in a specific format for that
+yst.sens.plot <- data.frame(gam.start = rep(c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75), each = 5891),
+                            gam.end = rep(c(0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0), each = 5891),
+                            gene = rep(unique(yst.gamma$gene), 7),
+                            eff.start = yst.gamma$effect[1:(nrow(yst.gene)*7)],
+                            eff.end = yst.gamma$effect[5892:(nrow(yst.gene)*8)],
+                            pvl.start = yst.gamma$we.eBH[1:(nrow(yst.gene)*7)],
+                            pvl.end = yst.gamma$we.eBH[5892:(nrow(yst.gene)*8)])
+
+# set colour value of all line segments based on pvalue at starting gamma
+yst.sens.plot$col <- case_when(yst.sens.plot$pvl.start >=0.05 ~ "grey", .default = "black")
+
+# add title
+yst.sens.ns$title <- "WT vs. \u0394Snf2 yeast transcriptome: ALDEx2 sensitivity analysis"
+
+# arrange by gene and gamma start values
+yst.sens.plot <- yst.sens.plot %>% 
+  arrange(gene, gam.start)
+
+# filter for non-significant and significant segments
+yst.sens.ns <- yst.sens.plot %>% 
+  filter(col == "grey")
+
+yst.sens.s <- yst.sens.plot %>% 
+  filter(col == "black")
+
+# make colour vector for manual legend
+sens.cols <- c("ns" = "grey", "s" = "black")
+
+# count number of significant genes at each gamma value and store in dataframe
+sig.genes <- vector()
+
+for(i in levels(factor(yst.gamma$gamma))){
+  sig.genes[i] <- length(which(yst.gamma$gamma == i & yst.gamma$we.eBH <0.05))
+}
+
+sig.genes <- as.data.frame(sig.genes)
+sig.genes$gamma <- as.numeric(rownames(sig.genes))
+
+# plot sensitivity analysis results
+# png("~/Documents/GitHub/currprotSDS/figs/yst_sensitivity.png",
+#     units = "in", height = 4, width = 5, res = 600)
+
+ggplot(data = yst.gamma, aes(x = gamma, y = effect))+
+  geom_segment(data = yst.sens.ns, linewidth = 0.1, aes(x = gam.start, xend = gam.end, y = eff.start, yend = eff.end, colour = "ns",))+
+  geom_segment(data = yst.sens.s, linewidth = 0.1, aes(x = gam.start, xend = gam.end, y = eff.start, yend = eff.end, colour = "s"))+
+  geom_text(data = sig.genes, aes(x = gamma, y = -14.5, label = sig.genes), colour = "blue", size = 5)+
+  scale_colour_manual(name = "Transcripts", values = sens.cols, labels = c("Non-significant", "Significant"), breaks = c("ns", "s"))+
+  geom_hline(yintercept = 0, linetype = 2, linewidth = 0.4, colour = "blue")+
+  scale_y_continuous(limits = c(-17, 17), expand = c(0,0))+
+  xlab("Gamma")+ ylab("Effect size")+
+  theme_bw()+
+  facet_wrap(~title)+
+  theme(legend.box.spacing = unit(0,"cm"), legend.key.width = unit(0.1,"cm"), 
+        legend.margin = margin(0,0,0,0,"cm"), legend.position = "top",
+        legend.title = element_text(size = 7, face = "bold"), legend.text = element_text(size = 6),
+        axis.title = element_text(size = 7), axis.text = element_text(size = 6),
+        strip.text = element_text(size = 7, face = "bold"))
 
 # dev.off()
