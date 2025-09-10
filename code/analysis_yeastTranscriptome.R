@@ -109,7 +109,7 @@ subset.snf2.0 <- subset.0.s.5["YOR290C",]
 
 # bind rows for plotting
 subset.all.0 <- rbind(subset.0.ns.0, subset.0.s.0, subset.0.s.5) %>% 
-  mutate(title = "WT vs. \u0394SNF2 yeast transcriptome: scale-naïve ALDEx2")
+  mutate(title = "WT vs. \u0394Snf2 yeast transcriptome: scale-naïve ALDEx2")
 
 # several -log10(Q) values are Inf as their corresponding p values are 0, so
 # convert these to '80' so they are shown legibly on the plot
@@ -130,7 +130,7 @@ p1 <- ggplot(data = subset.all.0, aes(x = diff.btw, y = qval))+
   geom_vline(xintercept = -1.4, linetype = 2, linewidth = 0.5, colour = "blue")+
   geom_point(aes(colour = df), size = 1.5, alpha = 0.5)+
   geom_point(data = subset.snf2.0, shape = 21, colour = "blue", size = 3.5, stroke = 1)+
-  annotate("text", x = 7.5, y = 76, colour = "blue", label = expression(italic("SNF2")), size = 3)+
+  annotate("text", x = 7.5, y = 76, colour = "blue", label = expression(italic("Snf2")), size = 3)+
   scale_x_continuous(limits = c(-3.5, 8), breaks = seq(-4,8, 2), expand = c(0.01,0.01))+
   scale_y_continuous(limits = c(0,82), expand = c(0.02,0.05))+
   scale_colour_manual(name = "Transcripts", values = c("black", "gold2", "red3"))+
@@ -176,7 +176,7 @@ subset.snf2.5 <- subset.5.s.5["YOR290C",]
 
 # bind rows for plotting
 subset.all.5 <- rbind(subset.5.ns.0, subset.5.s.5) %>% 
-  mutate(title = "WT vs. \u0394SNF2 yeast transcriptome: ALDEx2 (\u03b3 = 0.5)")
+  mutate(title = "WT vs. \u0394Snf2 yeast transcriptome: ALDEx2 (\u03b3 = 0.5)")
 
 # several -log10(Q) values are Inf as their corresponding p values are 0, so
 # convert these to '80' so they are shown legibly on the plot
@@ -196,7 +196,7 @@ p2 <- ggplot(data = subset.all.5, aes(x = diff.btw, y = qval))+
   geom_vline(xintercept = -1.4, linetype = 2, linewidth = 0.5, colour = "blue")+
   geom_point(aes(colour = df), size = 1.5, alpha = 0.5)+
   geom_point(data = subset.snf2.5, shape = 21, colour = "blue", size = 3.5, stroke = 1)+
-  annotate("text", x = 7.5, y = 52, colour = "blue", label = expression(italic("SNF2")), size = 3)+
+  annotate("text", x = 7.5, y = 52, colour = "blue", label = expression(italic("Snf2")), size = 3)+
   scale_x_continuous(limits = c(-3.5, 8), breaks = seq(-4,8, 2), expand = c(0.01,0.01))+
   scale_y_continuous(limits = c(0,57), expand = c(0.02,0.05))+
   scale_colour_manual(name = "Transcripts", values = c("black", "red3"))+
@@ -225,7 +225,7 @@ p2.edit <- ggplot(data = subset.all.5, aes(x = diff.btw, y = qval))+
   geom_vline(xintercept = -1.4, linetype = 2, linewidth = 0.5, colour = "blue")+
   geom_point(aes(colour = df), size = 1.5, alpha = 0.5)+
   geom_point(data = subset.snf2.5, shape = 21, colour = "blue", size = 3.5, stroke = 1)+
-  annotate("text", x = 7.5, y = 52, colour = "blue", label = expression(italic("SNF2")), size = 3)+
+  annotate("text", x = 7.5, y = 52, colour = "blue", label = expression(italic("Snf2")), size = 3)+
   scale_x_continuous(limits = c(-3.5, 8), breaks = seq(-4,8, 2), expand = c(0.01,0.01))+
   scale_y_continuous(limits = c(0,57), expand = c(0.02,0.05))+
   scale_colour_manual(name = "Transcripts", values = c("black", "red3"))+
@@ -256,7 +256,7 @@ p1 | p2.edit
 p3 <- ggplot(data = subset.all.0, aes(x = diff.win, y = diff.btw))+
   geom_point(aes(colour = df), alpha = 0.5, size = 1.5)+
   geom_point(data = subset.snf2.0, col = "blue", shape = 21, size = 3.5, stroke = 1)+
-  annotate("text", x = 1.18, y = 8, colour = "blue", label = expression(italic("SNF2")), size = 3)+
+  annotate("text", x = 1.18, y = 8, colour = "blue", label = expression(italic("Snf2")), size = 3)+
   geom_abline(intercept = 0, slope = 1, colour = "grey30",linewidth = 0.5, linetype = 2)+
   geom_abline(intercept = 0, slope = -1, colour = "grey30",linewidth = 0.5, linetype = 2)+
   geom_abline(intercept = 0, slope = 0, colour = "blue",linewidth = 0.5, linetype = 2)+
@@ -283,7 +283,7 @@ p3
 p4 <- ggplot(data = subset.all.5, aes(x = diff.win, y = diff.btw))+
   geom_point(aes(colour = df), alpha = 0.5, size = 1.5)+
   geom_point(data = subset.snf2.5, col = "blue", shape = 21, size = 3.5, stroke = 1)+
-  annotate("text", x = 1.39, y = 8, colour = "blue", label = expression(italic("SNF2")), size = 3)+
+  annotate("text", x = 1.39, y = 8, colour = "blue", label = expression(italic("Snf2")), size = 3)+
   geom_abline(intercept = 0, slope = 1, colour = "grey30",linewidth = 0.5, linetype = 2)+
   geom_abline(intercept = 0, slope = -1, colour = "grey30",linewidth = 0.5, linetype = 2)+
   geom_abline(intercept = 0, slope = 0, colour = "blue",linewidth = 0.5, linetype = 2)+
@@ -310,7 +310,7 @@ p4
 p4.edit <- ggplot(data = subset.all.5, aes(x = diff.win, y = diff.btw))+
   geom_point(aes(colour = df), alpha = 0.5, size = 1.5)+
   geom_point(data = subset.snf2.5, col = "blue", shape = 21, size = 3.5, stroke = 1)+
-  annotate("text", x = 1.39, y = 8, colour = "blue", label = expression(italic("SNF2")), size = 3)+
+  annotate("text", x = 1.39, y = 8, colour = "blue", label = expression(italic("Snf2")), size = 3)+
   geom_abline(intercept = 0, slope = 1, colour = "grey30",linewidth = 0.5, linetype = 2)+
   geom_abline(intercept = 0, slope = -1, colour = "grey30",linewidth = 0.5, linetype = 2)+
   geom_abline(intercept = 0, slope = 0, colour = "blue",linewidth = 0.5, linetype = 2)+
