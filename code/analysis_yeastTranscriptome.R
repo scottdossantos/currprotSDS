@@ -44,7 +44,8 @@ scratch <- FALSE
 # sort of dual cutoff approach
 
 # run ALDEx2 with virtually no scale uncertainty included, and again with a
-# gamma value of 0.5 standard deviations
+# gamma value of 0.5 standard deviations. Also run a sensitivity analysis on
+# the scale-naive data
 
 if(scratch == TRUE){
   
@@ -59,6 +60,13 @@ if(scratch == TRUE){
   
   yst.0.clr.all <- cbind(yst.0.clr.e, yst.0.clr.t)
   save(yst.0.clr.all, file = "~/Documents/GitHub/currprotSDS/data/yeast_scale0.Rda")
+  
+  
+  set.seed(2025)
+  yst.sens <- aldex.senAnalysis(yst.0.clr, test = "t", effect = TRUE, verbose = TRUE,
+                                gamma = c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0))
+  
+  # save(yst.sens, file = "~/Documents/GitHub/currprotSDS/data/yeast_sensitivity.Rda")
   
   
   set.seed(2025)
