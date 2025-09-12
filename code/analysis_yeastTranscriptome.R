@@ -381,9 +381,6 @@ yst.sens.plot <- data.frame(gam.start = rep(c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.7
 # set colour value of all line segments based on pvalue at starting gamma
 yst.sens.plot$col <- case_when(yst.sens.plot$pvl.start >=0.05 ~ "grey", .default = "black")
 
-# add title
-yst.sens.ns$title <- "WT vs. \u0394Snf2 yeast transcriptome: ALDEx2 sensitivity analysis"
-
 # arrange by gene and gamma start values
 yst.sens.plot <- yst.sens.plot %>% 
   arrange(gene, gam.start)
@@ -394,6 +391,9 @@ yst.sens.ns <- yst.sens.plot %>%
 
 yst.sens.s <- yst.sens.plot %>% 
   filter(col == "black")
+
+# add title
+yst.sens.ns$title <- "WT vs. \u0394Snf2 yeast transcriptome: ALDEx2 sensitivity analysis"
 
 # make colour vector for manual legend
 sens.cols <- c("ns" = "grey", "s" = "black")
