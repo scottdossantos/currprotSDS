@@ -18,12 +18,15 @@
 # install.packages("ggplot2")
 #
 # install.packages("ggnewscale")
+#
+# install.packages("patchwork")
 
 library(ALDEx2)
 library(CoDaSeq)
 library(dplyr)
 library(ggplot2)
 library(ggnewscale)
+library(patchwork)
 
 # read in feature table, metadata, KO term -> pathway lookup table and virgo
 # gene -> KO term lookup table from this study's repository
@@ -116,7 +119,7 @@ scale0.s <- scale.0.clr.all %>%
 
 scale0.ns <- scale.0.clr.all %>% 
   filter(we.eBH >= 0.05) %>% 
-  mutate(title = "Metatranscriptome: ALDEx2 dispersion vs. difference (\u03b3 = 0)")
+  mutate(title = "Metatranscriptome: ALDEx2 - scale-naïve (\u03b3 = 0)")
 
 scale0.hk <- scale.0.clr.all[hk.func,]
 
@@ -130,7 +133,7 @@ leg.size <- c("ns" = 0.9, "s" = 1.25, "hk" = 1.25)
 # png("~/Documents/GitHub/currprotSDS/figs/mts_effect_scale0.png",
 #     units = "in", height = 3, width = 5, res = 600)
 
-ggplot(data = scale0.ns, aes(x = diff.win, y = diff.btw))+
+p1 <- ggplot(data = scale0.ns, aes(x = diff.win, y = diff.btw))+
   geom_point(aes(fill = "ns", shape = "ns", alpha = "ns", size = "ns"))+
   geom_point(data = scale0.s, aes(fill = "s", shape = "s", alpha = "s", size = "s"), stroke = 0.15)+
   geom_point(data = scale0.hk, aes(fill = "hk", shape = "hk", alpha = "hk", size = "hk"), stroke = 0.15)+
@@ -151,6 +154,8 @@ ggplot(data = scale0.ns, aes(x = diff.win, y = diff.btw))+
         legend.title = element_text(size = 7, face = "bold"), legend.text = element_text(size = 6),
         axis.title = element_text(size = 7), axis.text = element_text(size = 6),
         strip.text = element_text(size = 7, face = "bold"))
+
+p1
 
 # dev.off()
 
@@ -192,7 +197,7 @@ scale5.s <- scale.5.clr.all %>%
 
 scale5.ns <- scale.5.clr.all %>% 
   filter(we.eBH >= 0.05) %>% 
-  mutate(title = "Metatranscriptome: ALDEx2 dispersion vs. difference (\u03b3 = 0.5)")
+  mutate(title = "Metatranscriptome: ALDEx2 - \u03b3 = 0.5")
 
 scale5.hk <- scale.5.clr.all[hk.func,]
 
@@ -200,7 +205,7 @@ scale5.hk <- scale.5.clr.all[hk.func,]
 # png("~/Documents/GitHub/currprotSDS/figs/mts_effect_scale5.png",
 #     units = "in", height = 3, width = 5, res = 600)
 
-ggplot(data = scale5.ns, aes(x = diff.win, y = diff.btw))+
+p2 <- ggplot(data = scale5.ns, aes(x = diff.win, y = diff.btw))+
   geom_point(aes(fill = "ns", shape = "ns", alpha = "ns", size = "ns"))+
   geom_point(data = scale5.s, aes(fill = "s", shape = "s", alpha = "s", size = "s"), stroke = 0.15)+
   geom_point(data = scale5.hk, aes(fill = "hk", shape = "hk", alpha = "hk", size = "hk"), stroke = 0.15)+
@@ -221,6 +226,8 @@ ggplot(data = scale5.ns, aes(x = diff.win, y = diff.btw))+
         legend.title = element_text(size = 7, face = "bold"), legend.text = element_text(size = 6),
         axis.title = element_text(size = 7), axis.text = element_text(size = 6),
         strip.text = element_text(size = 7, face = "bold"))
+
+p2
 
 # dev.off()
 
@@ -305,7 +312,7 @@ scalef.s <- scale.f.clr.all %>%
 
 scalef.ns <- scale.f.clr.all %>% 
   filter(we.eBH >= 0.05) %>% 
-  mutate(title = "Metatranscriptome: ALDEx2 dispersion vs. difference (\u03b3 = 0.5, \u03bc = 14 %)")
+  mutate(title = "Metatranscriptome: ALDEx2 - \u03b3 = 0.5, \u03bc = 14 %")
 
 scalef.hk <- scale.f.clr.all[hk.func,]
 
@@ -313,7 +320,7 @@ scalef.hk <- scale.f.clr.all[hk.func,]
 # png("~/Documents/GitHub/currprotSDS/figs/mts_effect_scaleFull.png",
 #     units = "in", height = 3, width = 5, res = 600)
 
-ggplot(data = scalef.ns, aes(x = diff.win, y = diff.btw))+
+p3 <- ggplot(data = scalef.ns, aes(x = diff.win, y = diff.btw))+
   geom_point(aes(fill = "ns", shape = "ns", alpha = "ns", size = "ns"))+
   geom_point(data = scalef.s, aes(fill = "s", shape = "s", alpha = "s", size = "s"), stroke = 0.15)+
   geom_point(data = scalef.hk, aes(fill = "hk", shape = "hk", alpha = "hk", size = "hk"), stroke = 0.15)+
@@ -335,6 +342,8 @@ ggplot(data = scalef.ns, aes(x = diff.win, y = diff.btw))+
         axis.title = element_text(size = 7), axis.text = element_text(size = 6),
         strip.text = element_text(size = 7, face = "bold"))
 
+p3
+
 # dev.off()
 
 # adding a scale difference of just 14 % between groups fixes the asymmetry 
@@ -344,6 +353,60 @@ ggplot(data = scalef.ns, aes(x = diff.win, y = diff.btw))+
 # be not significantly different are now significantly more expressed in the BV
 # group. For datasets like this, where there is a marked disparity in both gene
 # content and scale between conditions, a full-scale model is appropriate
+
+
+# remove y axis label from p2 and p3
+p2.edit <- ggplot(data = scale5.ns, aes(x = diff.win, y = diff.btw))+
+  geom_point(aes(fill = "ns", shape = "ns", alpha = "ns", size = "ns"))+
+  geom_point(data = scale5.s, aes(fill = "s", shape = "s", alpha = "s", size = "s"), stroke = 0.15)+
+  geom_point(data = scale5.hk, aes(fill = "hk", shape = "hk", alpha = "hk", size = "hk"), stroke = 0.15)+
+  scale_fill_manual(name = "Functions", values = leg.col, labels = c("Non-significant","Significant","Housekeeping"), breaks = c("ns","s", "hk"))+
+  scale_shape_manual(name = "Functions", values = leg.shape, labels = c("Non-significant","Significant","Housekeeping"), breaks = c("ns","s", "hk"))+
+  scale_alpha_manual(name = "Functions", values = leg.alpha, labels = c("Non-significant","Significant","Housekeeping"), breaks = c("ns","s", "hk"))+
+  scale_size_manual(name = "Functions", values = leg.size, labels = c("Non-significant","Significant","Housekeeping"), breaks = c("ns","s", "hk"))+
+  geom_abline(intercept = 0, slope = 1, colour = "grey30",linewidth = 0.5, linetype = 2)+
+  geom_abline(intercept = 0, slope = -1, colour = "grey30",linewidth = 0.5, linetype = 2)+
+  geom_abline(intercept = 0, slope = 0, colour = "blue",linewidth = 0.5, linetype = 2)+
+  scale_x_continuous(limits = c(0,9.5), expand = c(0.00001,0.01))+
+  scale_y_continuous(limits = c(-9.25,12.5), expand = c(0.00001,0.01))+
+  labs(x = "Log difference within groups", y = "")+
+  theme_bw()+
+  facet_wrap(~title)+
+  theme(legend.box.spacing = unit(0,"cm"), legend.key.width = unit(0.1,"cm"), 
+        legend.margin = margin(0,0,0,0,"cm"), legend.position = "top",
+        legend.title = element_text(size = 7, face = "bold"), legend.text = element_text(size = 6),
+        axis.title = element_text(size = 7), axis.text = element_text(size = 6),
+        strip.text = element_text(size = 7, face = "bold"))
+
+p3.edit <- ggplot(data = scalef.ns, aes(x = diff.win, y = diff.btw))+
+  geom_point(aes(fill = "ns", shape = "ns", alpha = "ns", size = "ns"))+
+  geom_point(data = scalef.s, aes(fill = "s", shape = "s", alpha = "s", size = "s"), stroke = 0.15)+
+  geom_point(data = scalef.hk, aes(fill = "hk", shape = "hk", alpha = "hk", size = "hk"), stroke = 0.15)+
+  scale_fill_manual(name = "Functions", values = leg.col, labels = c("Non-significant","Significant","Housekeeping"), breaks = c("ns","s", "hk"))+
+  scale_shape_manual(name = "Functions", values = leg.shape, labels = c("Non-significant","Significant","Housekeeping"), breaks = c("ns","s", "hk"))+
+  scale_alpha_manual(name = "Functions", values = leg.alpha, labels = c("Non-significant","Significant","Housekeeping"), breaks = c("ns","s", "hk"))+
+  scale_size_manual(name = "Functions", values = leg.size, labels = c("Non-significant","Significant","Housekeeping"), breaks = c("ns","s", "hk"))+
+  geom_abline(intercept = 0, slope = 1, colour = "grey30",linewidth = 0.5, linetype = 2)+
+  geom_abline(intercept = 0, slope = -1, colour = "grey30",linewidth = 0.5, linetype = 2)+
+  geom_abline(intercept = 0, slope = 0, colour = "blue",linewidth = 0.5, linetype = 2)+
+  scale_x_continuous(limits = c(0,9.5), expand = c(0.00001,0.01))+
+  scale_y_continuous(limits = c(-9.25,12.5), expand = c(0.00001,0.01))+
+  labs(x = "Log difference within groups", y = "")+
+  theme_bw()+
+  facet_wrap(~title)+
+  theme(legend.box.spacing = unit(0,"cm"), legend.key.width = unit(0.1,"cm"), 
+        legend.margin = margin(0,0,0,0,"cm"), legend.position = "top",
+        legend.title = element_text(size = 7, face = "bold"), legend.text = element_text(size = 6),
+        axis.title = element_text(size = 7), axis.text = element_text(size = 6),
+        strip.text = element_text(size = 7, face = "bold"))
+
+# plot all 3 figures together
+png("~/Documents/GitHub/currprotSDS/figs/mts_effect_scaleAll.png",
+    units = "in", height = 4, width = 10, res = 600)
+
+p1 | p2.edit | p3.edit
+
+dev.off()
 
 ########################### bonus visualisation: PCA ###########################
 
