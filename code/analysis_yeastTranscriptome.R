@@ -49,7 +49,7 @@ scratch <- FALSE
 
 if(scratch == TRUE){
   
-  set.seed(2025)
+  set.seed(2023)
   yst.0.clr <- aldex.clr(reads = yst.gene, conds = yst.meta$group, mc.samples = 128,
                            denom = "all", gamma = 1e-3, verbose = TRUE)
   
@@ -59,12 +59,12 @@ if(scratch == TRUE){
   yst.0.clr.t <- aldex.ttest(clr = yst.0.clr, verbose = TRUE)
   
   yst.0.clr.all <- cbind(yst.0.clr.e, yst.0.clr.t)
-  save(yst.0.clr.all, file = "~/Documents/GitHub/currprotSDS/data/yeast_scale0.Rda")
+  # save(yst.0.clr.all, file = "~/Documents/GitHub/currprotSDS/data/yeast_scale0.Rda")
   
   
   set.seed(2025)
   yst.sens <- aldex.senAnalysis(yst.0.clr, test = "t", effect = TRUE, verbose = TRUE,
-                                gamma = c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0))
+                                gamma = c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0))
   
   # save(yst.sens, file = "~/Documents/GitHub/currprotSDS/data/yeast_sensitivity.Rda")
   
@@ -357,7 +357,7 @@ plotGamma(yst.sens, test = "t", thresh = 0.05, blackWhite = T)
 
 # obtain data in tidy format
 yst.gamma <- do.call(rbind, yst.sens)
-yst.gamma$gamma <- rep(c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0), each = 5891)
+yst.gamma$gamma <- rep(c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0), each = 5891)
 yst.gamma <- yst.gamma %>% 
   select(c(diff.btw, diff.win, we.eBH, effect, gamma))
 
@@ -370,13 +370,13 @@ length(levels(factor(yst.gamma$gene))) == nrow(yst.gene) # TRUE
 # want to make a data frame contaning start and end values for line segments
 # showing each gene's effect sizes between two gamma values, from 1e0-3 to 0.1,
 # all the way to 0.75 to 1.0 need data in a specific format for that
-yst.sens.plot <- data.frame(gam.start = rep(c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.75), each = 5891),
-                            gam.end = rep(c(0.1, 0.2, 0.3, 0.4, 0.5, 0.75, 1.0), each = 5891),
-                            gene = rep(unique(yst.gamma$gene), 7),
-                            eff.start = yst.gamma$effect[1:(nrow(yst.gene)*7)],
-                            eff.end = yst.gamma$effect[5892:(nrow(yst.gene)*8)],
-                            pvl.start = yst.gamma$we.eBH[1:(nrow(yst.gene)*7)],
-                            pvl.end = yst.gamma$we.eBH[5892:(nrow(yst.gene)*8)])
+yst.sens.plot <- data.frame(gam.start = rep(c(1e-3, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9), each = 5891),
+                            gam.end = rep(c(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0), each = 5891),
+                            gene = rep(unique(yst.gamma$gene), 10),
+                            eff.start = yst.gamma$effect[1:(nrow(yst.gene)*10)],
+                            eff.end = yst.gamma$effect[5892:(nrow(yst.gene)*11)],
+                            pvl.start = yst.gamma$we.eBH[1:(nrow(yst.gene)*10)],
+                            pvl.end = yst.gamma$we.eBH[5892:(nrow(yst.gene)*11)])
 
 # set colour value of all line segments based on pvalue at starting gamma
 yst.sens.plot$col <- case_when(yst.sens.plot$pvl.start >=0.05 ~ "grey", .default = "black")
@@ -393,7 +393,7 @@ yst.sens.s <- yst.sens.plot %>%
   filter(col == "black")
 
 # add title
-yst.sens.ns$title <- "WT vs. \u0394Snf2 yeast transcriptome: ALDEx2 sensitivity analysis"
+yst.sens.ns$title <- "WT vs. \u0394Snf2 yeast transcriptome: sensitivity analysis"
 
 # make colour vector for manual legend
 sens.cols <- c("ns" = "grey", "s" = "black")
@@ -408,24 +408,75 @@ for(i in levels(factor(yst.gamma$gamma))){
 sig.genes <- as.data.frame(sig.genes)
 sig.genes$gamma <- as.numeric(rownames(sig.genes))
 
+# make df for blue lines on x axis
+lines <- data.frame(xstart = seq(0,1,0.1), xend = seq(0,1,0.1),
+                    ystart = rep(-17,11), yend = rep(-15.5,11))
+
 # plot sensitivity analysis results
 # png("~/Documents/GitHub/currprotSDS/figs/yst_sensitivity.png",
 #     units = "in", height = 4, width = 5, res = 600)
 
-ggplot(data = yst.gamma, aes(x = gamma, y = effect))+
+p1 <- ggplot(data = yst.gamma, aes(x = gamma, y = effect))+
   geom_segment(data = yst.sens.ns, linewidth = 0.1, aes(x = gam.start, xend = gam.end, y = eff.start, yend = eff.end, colour = "ns",))+
   geom_segment(data = yst.sens.s, linewidth = 0.1, aes(x = gam.start, xend = gam.end, y = eff.start, yend = eff.end, colour = "s"))+
-  geom_text(data = sig.genes, aes(x = gamma, y = -14.5, label = sig.genes), colour = "blue", size = 5)+
+  geom_segment(data = lines, aes(x = xend, y = ystart, yend = yend), colour = "blue")+
+  geom_text(data = sig.genes, aes(x = gamma, y = -14.5, label = sig.genes), colour = "blue", size = 2.75)+
   scale_colour_manual(name = "Transcripts", values = sens.cols, labels = c("Non-significant", "Significant"), breaks = c("ns", "s"))+
   geom_hline(yintercept = 0, linetype = 2, linewidth = 0.4, colour = "blue")+
   scale_y_continuous(limits = c(-17, 17), expand = c(0,0))+
   xlab("Gamma")+ ylab("Effect size")+
   theme_bw()+
   facet_wrap(~title)+
-  theme(legend.box.spacing = unit(0,"cm"), legend.key.width = unit(0.1,"cm"), 
+  theme(legend.box.spacing = unit(0,"cm"), legend.key.width = unit(0.5,"cm"), 
         legend.margin = margin(0,0,0,0,"cm"), legend.position = "top",
-        legend.title = element_text(size = 7, face = "bold"), legend.text = element_text(size = 6),
-        axis.title = element_text(size = 7), axis.text = element_text(size = 6),
-        strip.text = element_text(size = 7, face = "bold"))
+        legend.title = element_text(size = 0, face = "bold"), 
+        legend.text = element_text(size = 8), legend.key.spacing.x = unit(0.75, "cm"),
+        axis.title = element_text(size = 9), axis.text = element_text(size = 8),
+        strip.text = element_text(size = 8, face = "bold"))
+
+p1
+
+# dev.off()
+
+# finally, want to show the minimum log-fold change necessary for a significant
+# result vs. gamma
+lfc <- vector()
+for(i in levels(factor(yst.gamma$gamma))){
+  tmpdf <- yst.gamma[yst.gamma$gamma == i,]
+  lfc[i] <- min(abs(tmpdf$diff.btw[tmpdf$we.eBH <0.05]))
+}
+
+# linear regression on gamma vs. minimum fold change
+lfc <- data.frame(gamma = as.numeric(names(lfc)), fc = lfc)
+lfc$title <- "Minimum log difference required for P <0.05"
+
+# slope is 2.3 (we have seen that the slope is close to 2 for 10 different 
+# datasets, over 100 iterations, including bulk RNA-seq, metatranscriptomic data
+# and single-cell datasets)
+lm(fc~gamma, data = lfc)
+
+# plot data w/ regression line, plus inferred gamma value from minimum diff
+# between groups of 0.5
+# png("~/Documents/GitHub/currprotSDS/figs/yst_gammaMinDiff.png",
+#     units = "in", height = 4, width = 5, res = 600)
+
+p2 <- ggplot(data = lfc, aes(x = gamma, y = fc))+
+  geom_point(colour = "black", fill = "royalblue", shape = 21, stroke = 0.3, size = 2.5)+
+  xlab("Scale uncertainty (\u03b3)") + ylab("Minimum difference")+
+  geom_smooth(method = "lm", linewidth = 0.5, colour = "red")+
+  theme_bw()+
+  facet_wrap(~title)+
+  theme(strip.text = element_text(size = 8, face = "bold"),
+        axis.text = element_text(size = 8), axis.title = element_text(size = 9))
+
+p2
+
+# dev.off()
+
+
+# png("~/Documents/GitHub/currprotSDS/figs/yst_sensGammaMin.png",
+#     units = "in", height = 4, width = 8, res = 600)
+
+p1 | p2
 
 # dev.off()
