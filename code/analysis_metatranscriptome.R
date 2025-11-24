@@ -1,7 +1,7 @@
 # analysis of vaginal metatranscriptome data (Dos Santos et al. 2024)
 
 # Scott Dos Santos
-# Last edited: 2025-08-26
+# Last edited: 2025-11-19
 
 #################################### setup ####################################
 
@@ -401,12 +401,12 @@ p3.edit <- ggplot(data = scalef.ns, aes(x = diff.win, y = diff.btw))+
         strip.text = element_text(size = 7, face = "bold"))
 
 # plot all 3 figures together
-png("~/Documents/GitHub/currprotSDS/figs/mts_effect_scaleAll.png",
-    units = "in", height = 4, width = 10, res = 600)
+# png("~/Documents/GitHub/currprotSDS/figs/mts_effect_scaleAll.png",
+#     units = "in", height = 4, width = 10, res = 600)
 
 p1 | p2.edit | p3.edit
 
-dev.off()
+# dev.off()
 
 ########################### bonus visualisation: PCA ###########################
 
@@ -439,8 +439,7 @@ biplot(pca.f, cex = c(0.55, 0.25), col = c("blue", rgb(0,0,0,0.1)))
 # package to make a prettier plot; codaSeq.PCAplot() requires lists contaning
 # row/column indices of features/samples (respectively) in the data that you
 # want to show and/or colour
-ind.grp <- list(Healthy = which(mts.meta$group == "Healthy"),
-                BV = which(mts.meta$group == "BV"))
+ind.grp <- list(Healthy = which(mts.meta$group == "Healthy"), BV = which(mts.meta$group == "BV"))
 
 # highlight several pathways from our previous analysis, as well as HK functions
 pathways <- c("Aminoacyl-tRNA biosynthesis","Bacterial chemotaxis","Butanoate metabolism",
@@ -448,7 +447,12 @@ pathways <- c("Aminoacyl-tRNA biosynthesis","Bacterial chemotaxis","Butanoate me
               "Porphyrin metabolism","Ribosome","Starch and sucrose metabolism",
               "Two-component system")
 
+
+
 ind.load <- list()
+
+for(i in pathways){ind.load[[i]] <- which(mts.func$pathway == i)}
+
 for(i in pathways){
   ind.load[[i]] <- which(mts.func$pathway == i)
 }
@@ -467,8 +471,9 @@ cols.load <- c("skyblue1","red3","gold2","chocolate4","greenyellow","purple3",
 
 codaSeq.PCAplot(pca.f, plot.groups = T, plot.loadings = T, plot.density = "groups",
                 PC = c(1,2), grp = ind.grp, grp.col = cols.group, grp.cex = 0.75,
-                load.grp = ind.load, load.col = cols.load, load.sym = 19, load.cex = 0.6,
-                plot.legend = "loadings", leg.position = "bottomright", leg.columns = 2, leg.cex = 0.625,
+                load.grp = ind.load, load.col = cols.load, load.sym = 19, 
+                load.cex = 0.6, plot.legend = "loadings", leg.position = "bottomright",
+                leg.columns = 2, leg.cex = 0.625,
                 title = "Vaginal metatranscriptome: PCA plot (\u03b3 = 0.5, \u03bc = 14 %)")
 
 # dev.off()
@@ -477,14 +482,14 @@ codaSeq.PCAplot(pca.f, plot.groups = T, plot.loadings = T, plot.density = "group
 # alternatively, one can extract the raw plotting data for the feature loadings 
 # using codaSeq.PCAvalues(), and extract the raw sample loadings from the prcomp
 # object, the then use your own desired method for plotting
-load.f.samp <- data.frame(pca.f$x)
-load.f.feat <- codaSeq.PCAvalues(pca.f)
+load.f.samp <- data.frame(pca.f$x)[,1:2]
+load.f.feat <- codaSeq.PCAvalues(pca.f)[,1:2]
 
-# add column for setting pathway
-for(i in 1:length(ind.load)){
-  load.f.feat[ind.load[[i]], "path"] <- names(ind.load)[i]
-}
+# add pathways to the corresponding KO terms in the feature list
+for(i in 1:length(ind.load)){load.f.feat[ind.load[[i]], "path"] <- names(ind.load)[i]}
 
+# add column for setting the outline of the data point (either transparent grey
+# or solid black) based on whether the KO should be highlighted or not)
 load.f.feat$col <- case_when(load.f.feat$path == "Other" ~ rgb(0,0,0,0.05), .default = "black")
 
 # reorder levels of pathway factor to ensure 'Other' is plotted last & colours
@@ -492,14 +497,13 @@ load.f.feat$col <- case_when(load.f.feat$path == "Other" ~ rgb(0,0,0,0.05), .def
 lvs <- levels(factor(load.f.feat$path))
 load.f.feat$path <- factor(load.f.feat$path, levels = c(lvs[1:6], lvs[8:11], lvs[7]))
 
-# add columns for setting group colours and strip title
-for(i in 1:length(ind.grp)){
-  load.f.samp[ind.grp[[i]], "group"] <- names(ind.grp)[i]
-}
+# add columns for the sample group colours and strip title
+for(i in 1:length(ind.grp)){load.f.samp[ind.grp[[i]], "group"] <- names(ind.grp)[i]}
 
 load.f.samp$title <- "Vaginal metatranscriptome: PCA plot (\u03b3 = 0.5, \u03bc = 14 %)"
 
 # make vector for ensuring order of grouping colours and changing legend symbol
+# from 'a' to 'h' or 'v'
 grp_labels<- c(Healthy = "h", BV = "v")
 
 # plot with ggplot 
@@ -513,7 +517,8 @@ ggplot(data = load.f.samp, aes(x = PC1, y = PC2))+
   scale_colour_manual(name = "Group", values = cols.group, breaks = names(grp_labels), 
                       guide = guide_legend(override.aes = list(label = grp_labels)))+
   new_scale_colour()+
-  geom_point(data = load.f.feat, aes(fill = path, colour = col), stroke = 0.25, shape = 21, size = 2)+
+  geom_point(data = load.f.feat, aes(fill = path, colour = col), 
+             stroke = 0.25, shape = 21, size = 2)+
   scale_fill_manual(name = "Pathway", values = cols.load,)+
   scale_colour_manual(name = "Pathway", values = c(rgb(0,0,0,0.05), "black"))+
   xlab("PC1: 49.4 % variance explained")+
