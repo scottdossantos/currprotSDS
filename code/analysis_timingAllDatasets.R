@@ -263,3 +263,24 @@ for(i in 1:5){
 }
 
 # save(mc.times.mts, file = "~/Documents/GitHub/currprotSDS/data/mc.times.mts.Rda")
+
+####################### timing: calculating mean & s.d.  #######################
+
+# load all .Rda objects containing time information from GitHub
+mc.t <- paste0("https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/",
+               "mc.times.", c("imm", "mts", "yst"),".Rda")
+
+mc.f <- paste0("https://github.com/scottdossantos/currprotSDS/raw/refs/heads/main/data/",
+               "times.", c("imm", "mts", "yst"),".Rda")
+
+for(i in c(mc.t, mc.f)){
+  load(url(i))
+  rm(i)
+}
+
+# calculate means and standard deviations across 5 instances of ALDEx2
+for(i in ls(pattern = "times")){
+  message(paste0("Mean time taken (", i, ") \n",
+                 mean(get(i)$total), "\n",
+                 "Std dev. time taken (", i, ") \n", sd(get(i)$total), "\n"))
+}
